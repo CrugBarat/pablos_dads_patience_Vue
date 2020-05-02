@@ -3,11 +3,20 @@
     <div class="title">
       <p>Pablo's Da's Patience</p>
     </div>
+    <div>
+      <card-table></card-table>
+    </div>
   </div>
 </template>
 
 <script>
+import CardTable from './components/CardTable.vue'
+
 export default {
+  name: 'app',
+  components: {
+    'card-table': CardTable
+  }
 }
 </script>
 
