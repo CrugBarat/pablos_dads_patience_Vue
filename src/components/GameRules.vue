@@ -11,7 +11,7 @@
           <li>Ace : 1</li>
           <li>2..10 : 2..10</li>
           <li>Jack : 11</li>
-          <li>Quenn : 12</li>
+          <li>Queen : 12</li>
           <li>King : 13</li>
         </ul>
       </div>

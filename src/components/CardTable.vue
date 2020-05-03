@@ -11,7 +11,7 @@
       <div class="call-cr-container">
         <div class="call-cr">
           <div class="call"> <p>Player Call: {{this.playerCall}}</p></div>
-          <div class="cards-remianing"> <p>Cards Remining: {{this.cardsRemaining}}</p></div>
+          <div class="cards-remianing"> <p>Cards Remaining: {{this.cardsRemaining}}</p></div>
         </div>
       </div>
       <div class="cards-container">
@@ -181,7 +181,7 @@ export default {
 
 .call-cr {
   display: inline-block;
-  width: 40%;
+  width: 45%;
 }
 
 .call {
