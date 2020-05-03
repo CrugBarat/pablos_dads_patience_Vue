@@ -7,21 +7,21 @@
       </div>
     </div>
     <div class="cards-container">
-    <div class="cards">
-      <img class="card" :src="start ? getCard() : back">
-    </div>
+      <div class="cards">
+        <img class="card" :src="start ? getCard() : back">
+      </div>
     </div>
     <div class="button-container">
-    <input class="button" type="image" :src="button" @mousedown="handleClick" @mouseup="handleRelease">
-  </div>
+      <input class="button" type="image" :src="button" @mousedown="handleClick" @mouseup="handleRelease">
+    </div>
   </div>
 </template>
 
 <script>
-import back from '@/assets/cards/back.png'
-import button from '@/assets/button.png'
-import {CardsArray} from '@/config/CardsArray.js'
-import {RestartArray} from '@/config/RestartArray.js'
+import back from '@/assets/cards/back.png';
+import button from '@/assets/button.png';
+import {CardsArray} from '@/config/CardsArray.js';
+import {RestartArray} from '@/config/RestartArray.js';
 
 export default {
   name: 'card-table',
@@ -43,9 +43,9 @@ export default {
     handleClick(){
       this.start = true;
       this.getCardObject();
-      this.playerCallCap()
-      this.decreaseCardsRemaining()
-      this.removeCard()
+      this.playerCallCap();
+      this.decreaseCardsRemaining();
+      this.removeCard();
     },
     handleRelease() {
       this.checkLose();
@@ -57,22 +57,22 @@ export default {
     getCardObject() {
       this.card = this.cardsArray[this.randomCard(this.cardsRemaining)];
       this.cardKey = Object.keys(this.card);
-      this.cardValue = Object.values(this.card)[0]
+      this.cardValue = Object.values(this.card)[0];
     },
     randomCard(num) {
-      return Math.floor(Math.random() * (num))
+      return Math.floor(Math.random() * (num));
     },
     checkLose() {
       if (this.playerCall === this.cardValue) {
-          alert('YOU LOSE!');
-          this.resetGame();
-        }
-      },
+        alert('YOU LOSE!');
+        this.resetGame();
+      }
+    },
     pablosDasPatience() {
       if (this.cardsRemaining === 0) {
         alert('YOU WON!');
       } else {
-        this.checkLose()
+        this.checkLose();
       }
     },
     playerCallCap() {
@@ -83,7 +83,7 @@ export default {
     },
     removeCard() {
       const index = this.cardsArray.indexOf(this.getCard());
-      this.cardsArray.splice(index, 1)
+      this.cardsArray.splice(index, 1);
     },
     resetGame() {
       this.playerCall = 0;
@@ -99,54 +99,63 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.scores-container {
-  display: block;
-  text-align: center;
-  margin: 5px;
-  margin-bottom: 20px;
-}
-.scores {
-  display: inline-block;
-  width: 40%;
-}
-.call {
-  font-size:30px;
-  float: left;
-  margin-right: 3%;
-  width: 45%;
-}
-.cards-remianing {
-  font-size:30px;
-  float: left;
-  width: 45%;
-}
-.cards-container {
-  display: block;
-  text-align: center;
-  margin-bottom: 30px;
-}
-.cards {
-  display: inline-block;
-}
-.card {
-  height: 40vh;
-}
-.button-container {
-  text-align: center;
-}
-.button {
-  height: 60px;
-  opacity: 80%;
-}
 
-p {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto';
-  color: white;
-}
+  .scores-container {
+    display: block;
+    text-align: center;
+    margin: 5px;
+    margin-bottom: 20px;
+  }
 
-input:focus {
-  outline: none;
-}
+  .scores {
+    display: inline-block;
+    width: 40%;
+  }
+
+  .call {
+    font-size:30px;
+    float: left;
+    margin-right: 3%;
+    width: 45%;
+  }
+
+  .cards-remianing {
+    font-size:30px;
+    float: left;
+    width: 45%;
+  }
+
+  .cards-container {
+    display: block;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .cards {
+    display: inline-block;
+  }
+
+  .card {
+    height: 40vh;
+  }
+
+  .button-container {
+    text-align: center;
+  }
+
+  .button {
+    height: 60px;
+    opacity: 80%;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto';
+    color: white;
+  }
+
+  input:focus {
+    outline: none;
+  }
 </style>
