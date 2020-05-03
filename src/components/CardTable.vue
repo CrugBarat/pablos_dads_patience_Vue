@@ -12,7 +12,7 @@
     </div>
     </div>
     <div class="button-container">
-    <input class="button" type="image" :src="button" v-on:click="handleClick">
+    <input class="button" type="image" :src="button" @mousedown="handleClick" @mouseup="handleRelease">
   </div>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
     return {
       'back': back,
       'button': button,
-      'playerCall': 1,
+      'playerCall': 0,
       'cardsRemaining': 52,
       'start': null,
       'cardsArray': CardsArray,
@@ -41,44 +41,38 @@ export default {
   },
   methods: {
     handleClick(){
-      this.start = true,
-      this.getCardObject(),
-      this.getCardKey(),
-      this.getCardValue(),
-      this.pablosDasPatience()
+      this.start = true;
+      this.getCardObject();
+      this.playerCallCap()
+      this.decreaseCardsRemaining()
+      this.removeCard()
+    },
+    handleRelease() {
+      this.checkLose();
+      this.pablosDasPatience();
     },
     getCard() {
       return require('@/assets/cards/' + this.cardKey + '.png');
     },
     getCardObject() {
-      this.card = this.cardsArray[this.randomCard(this.cardsRemaining)]
-    },
-    getCardKey() {
-      this.cardKey = Object.keys(this.card)
-    },
-    getCardValue() {
+      this.card = this.cardsArray[this.randomCard(this.cardsRemaining)];
+      this.cardKey = Object.keys(this.card);
       this.cardValue = Object.values(this.card)[0]
     },
     randomCard(num) {
       return Math.floor(Math.random() * (num))
     },
+    checkLose() {
+      if (this.playerCall === this.cardValue) {
+          alert('YOU LOSE!');
+          this.resetGame();
+        }
+      },
     pablosDasPatience() {
-      if (this.cardsRemaining === 0)
-      {
+      if (this.cardsRemaining === 0) {
         alert('YOU WON!');
-      } else if (this.cardsRemaining > 0 && this.playerCall !== this.cardValue) {
-        this.playerCallCap()
-        this.decreaseCardsRemaining()
-        this.removeCard()
       } else {
-        alert('YOU LOSE!');
-        this.playerCall = 1;
-        this.cardsRemaining = 52;
-        this.start = null;
-        this.card = null;
-        this.cardKey = null;
-        this.cardValue = null;
-        this.cardsArray = [...this.restartArray];
+        this.checkLose()
       }
     },
     playerCallCap() {
@@ -91,35 +85,47 @@ export default {
       const index = this.cardsArray.indexOf(this.getCard());
       this.cardsArray.splice(index, 1)
     },
+    resetGame() {
+      this.playerCall = 0;
+      this.cardsRemaining = 52;
+      this.start = null;
+      this.card = null;
+      this.cardKey = null;
+      this.cardValue = null;
+      this.cardsArray = [...this.restartArray];
+    }
   }
 }
 </script>
 
 <style lang="css" scoped>
 .scores-container {
-  border-style: solid;
   display: block;
   text-align: center;
+  margin: 5px;
+  margin-bottom: 20px;
 }
 .scores {
   display: inline-block;
+  width: 40%;
 }
 .call {
   font-size:30px;
   float: left;
   margin-right: 3%;
+  width: 45%;
 }
 .cards-remianing {
   font-size:30px;
   float: left;
+  width: 45%;
 }
 .cards-container {
-  border-style: solid;
   display: block;
   text-align: center;
+  margin-bottom: 30px;
 }
 .cards {
-  border-style: solid;
   display: inline-block;
 }
 .card {
@@ -138,5 +144,9 @@ p {
   padding: 0;
   font-family: 'Roboto';
   color: white;
+}
+
+input:focus {
+  outline: none;
 }
 </style>
