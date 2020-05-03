@@ -25,7 +25,7 @@ If the player successfully turns over every card - THEY WIN!
 - Ace : 1
 - 2..10 : 2..10
 - Jack : 11
-- Quenn : 12
+- Queen : 12
 - King : 13
 
 ---
@@ -56,4 +56,4 @@ npm run serve
 
 Inspired by the bold Kenny Marshall.
 
-Icons used: [IconsDb](https://www.iconsdb.com/) 
+Icons used: [IconsDb](https://www.iconsdb.com/)
