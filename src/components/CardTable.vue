@@ -1,8 +1,10 @@
 <template lang="html">
   <div>
-    <div class="high-score-container">
-      <div class="high-score">
-        <div class="score"> <p>High Score: {{this.highScore}}</p></div>
+    <div class="scores-container">
+      <div class="scores">
+        <div class="games"> <p>Games: {{this.games}}</p></div>
+        <div class="high-score"> <p>High Score: {{this.highScore}}</p></div>
+        <div class="games-won"> <p>Games Won: {{this.gamesWon}}</p></div>
       </div>
     </div>
     <div class="call-cr-container">
@@ -42,7 +44,9 @@ export default {
       'card': null,
       'cardKey': null,
       'cardValue': null,
-      'highScore': 0
+      'highScore': 0,
+      'games': 0,
+      'gamesWon': 0
     }
   },
   methods: {
@@ -72,13 +76,16 @@ export default {
         alert('YOU LOSE!');
         this.addHighScore();
         this.resetGame();
+        this.games += 1;
       }
     },
     pablosDasPatience() {
       if (this.cardsRemaining === 0) {
         alert('YOU WON!');
-        this.addHighScore();
         this.resetGame();
+        this.gamesWon += 1;
+        this.games += 1;
+        this.highScore = 0;
       } else {
         this.checkLose();
       }
@@ -114,18 +121,33 @@ export default {
 
 <style lang="css" scoped>
 
-.high-score-container {
+.scores-container {
   display: block;
   text-align: center;
   margin-bottom: 20px;
 }
 
-.high-score{
+.scores {
   display: inline-block;
+  width: 80%;
 }
 
-.score {
+.high-score {
   font-size:30px;
+  width: 32%;
+  float: left;
+}
+
+.games-won {
+  font-size:30px;
+  width: 32%;
+  float: left;
+}
+
+.games {
+  font-size:30px;
+  width: 32%;
+  float: left;
 }
 
 .call-cr-container {
