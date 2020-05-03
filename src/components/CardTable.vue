@@ -129,7 +129,7 @@ export default {
 
 .scores {
   display: inline-block;
-  width: 80%;
+  width: 60%;
 }
 
 .high-score {
