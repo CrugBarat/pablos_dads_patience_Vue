@@ -1,25 +1,31 @@
 <template lang="html">
   <div>
-    <div class="scores-container">
-      <div class="scores">
-        <div class="games"> <p>Games: {{this.games}}</p></div>
-        <div class="high-score"> <p>High Score: {{this.highScore}}</p></div>
-        <div class="games-won"> <p>Games Won: {{this.gamesWon}}</p></div>
+    <div class="game-board" v-if="!gameRules">
+      <div class="scores-container">
+        <div class="scores">
+          <div class="games"> <p>Games: {{this.games}}</p></div>
+          <div class="high-score"> <p>High Score: {{this.highScore}}</p></div>
+          <div class="games-won"> <p>Games Won: {{this.gamesWon}}</p></div>
+        </div>
       </div>
-    </div>
-    <div class="call-cr-container">
-      <div class="call-cr">
-        <div class="call"> <p>Player Call: {{this.playerCall}}</p></div>
-        <div class="cards-remianing"> <p>Cards Remining: {{this.cardsRemaining}}</p></div>
+      <div class="call-cr-container">
+        <div class="call-cr">
+          <div class="call"> <p>Player Call: {{this.playerCall}}</p></div>
+          <div class="cards-remianing"> <p>Cards Remining: {{this.cardsRemaining}}</p></div>
+        </div>
       </div>
-    </div>
-    <div class="cards-container">
-      <div class="cards">
-        <img class="card" :src="start ? getCard() : back">
+      <div class="cards-container">
+        <div class="cards">
+          <img class="card" :src="start ? getCard() : back">
+        </div>
       </div>
     </div>
     <div class="button-container">
       <input class="button" type="image" :src="button" @mousedown="handleClick" @mouseup="handleRelease">
+      <input class="button" type="image" :src="rules" v-on:click="getGameRules">
+    </div>
+    <div>
+      <game-rules v-if="gameRules"></game-rules>
     </div>
   </div>
 </template>
@@ -27,8 +33,10 @@
 <script>
 import back from '@/assets/cards/back.png';
 import button from '@/assets/button.png';
+import rules from '@/assets/rules.png';
 import {CardsArray} from '@/config/CardsArray.js';
 import {RestartArray} from '@/config/RestartArray.js';
+import GameRules from './GameRules.vue';
 
 export default {
   name: 'card-table',
@@ -36,6 +44,7 @@ export default {
     return {
       'back': back,
       'button': button,
+      'rules': rules,
       'playerCall': 0,
       'cardsRemaining': 52,
       'start': null,
@@ -46,12 +55,17 @@ export default {
       'cardValue': null,
       'highScore': 0,
       'games': 0,
-      'gamesWon': 0
+      'gamesWon': 0,
+      'gameRules': null
     }
+  },
+  components: {
+    'game-rules': GameRules
   },
   methods: {
     handleClick(){
       this.start = true;
+      this.gameRules = null;
       this.getCardObject();
       this.playerCallCap();
       this.decreaseCardsRemaining();
@@ -59,6 +73,9 @@ export default {
     },
     handleRelease() {
       this.pablosDasPatience();
+    },
+    getGameRules(){
+      this.gameRules = true;
     },
     getCard() {
       return require('@/assets/cards/' + this.cardKey + '.png');
@@ -196,6 +213,8 @@ export default {
 .button {
   height: 60px;
   opacity: 80%;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 p {
