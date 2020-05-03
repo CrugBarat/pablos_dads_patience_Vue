@@ -1,19 +1,51 @@
-# patience
+# Pablo's Dad's Patience
 
-## Project setup
+A single player card game built using:
+
+**Programming Language**: JavaScript
+
+**Web App Framework**: Vue
+
+**Markup/Styling**: HTML5/CSS3
+
+I built PDP for a friend. His dad taught him this game and I thought it would be fun to code it. It's annoying as it is addictive.
+
+---
+
+# Rules
+
+Player starts with a full deck of cards. They must turn over each card while calling out numbers from 1 to 13 in order. 1,2,3,4,5..... They must repeat this number sequence until all cards are turned.
+
+If the player's call matches the numerical value of the turned card - THEY LOSE!
+
+If the player successfully turns over every card - THEY WIN!
+
+**Card Values**
+
+A:1
+2-10:2-10
+J:11
+Q:12
+K:13
+
+---
+
+# Setup
+
+- Download/Clone files
+
+- In Terminal
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+- Compile
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- Click the link below to open project in browser
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[LocalHost](http://localhost:8080/)
