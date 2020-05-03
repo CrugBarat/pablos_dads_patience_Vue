@@ -8,7 +8,7 @@ A single player card game built using:
 
 **Markup/Styling**: HTML5/CSS3
 
-I built PDP for a friend. His dad taught him this game when he was kid and I thought it would be fun to code it. The physical card game is as annoying as it is addictive. The app might just be annoying :)
+I built PDP for a friend. His dad taught him the game when he was kid and I thought it would be fun to code it. The physical card game is as annoying as it is addictive. The app might just be annoying :)
 
 ---
 
