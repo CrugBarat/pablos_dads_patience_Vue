@@ -21,6 +21,7 @@
       </div>
     </div>
     <div class="button-container">
+      <input v-if="gameRules" class="button" type="image" :src="returnButton" v-on:click="handleReturn">
       <input class="button" type="image" :src="button" @mousedown="handleClick" @mouseup="handleRelease">
       <input class="button" type="image" :src="rules" v-on:click="getGameRules">
     </div>
@@ -34,6 +35,7 @@
 import back from '@/assets/cards/back.png';
 import button from '@/assets/button.png';
 import rules from '@/assets/rules.png';
+import returnButton from '@/assets/return.png';
 import {CardsArray} from '@/config/CardsArray.js';
 import {RestartArray} from '@/config/RestartArray.js';
 import GameRules from './GameRules.vue';
@@ -45,6 +47,7 @@ export default {
       'back': back,
       'button': button,
       'rules': rules,
+      'returnButton': returnButton,
       'playerCall': 0,
       'cardsRemaining': 52,
       'start': null,
@@ -65,7 +68,6 @@ export default {
   methods: {
     handleClick(){
       this.start = true;
-      this.gameRules = null;
       this.getCardObject();
       this.playerCallCap();
       this.decreaseCardsRemaining();
@@ -76,6 +78,9 @@ export default {
     },
     getGameRules(){
       this.gameRules = true;
+    },
+    handleReturn(){
+      this.gameRules = null;
     },
     getCard() {
       return require('@/assets/cards/' + this.cardKey + '.png');
