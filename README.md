@@ -8,7 +8,7 @@ A single player card game built using:
 
 **Markup/Styling**: HTML5/CSS3
 
-I built PDP for a friend. His dad taught him this game and I thought it would be fun to code it. It's annoying as it is addictive.
+I built PDP for a friend. His dad taught him this game and I thought it would be fun to code it. It's as annoying as it is addictive.
 
 ---
 
@@ -22,11 +22,11 @@ If the player successfully turns over every card - THEY WIN!
 
 **Card Values**
 
-A:1
-2-10:2-10
-J:11
-Q:12
-K:13
+- Ace : 1
+- 2..10 : 2..10
+- Jack : 11
+- Quenn : 12
+- King : 13
 
 ---
 
