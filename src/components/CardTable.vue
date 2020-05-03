@@ -1,7 +1,12 @@
 <template lang="html">
   <div>
-    <div class="scores-container">
-      <div class="scores">
+    <div class="high-score-container">
+      <div class="high-score">
+        <div class="score"> <p>High Score: {{this.highScore}}</p></div>
+      </div>
+    </div>
+    <div class="call-cr-container">
+      <div class="call-cr">
         <div class="call"> <p>Player Call: {{this.playerCall}}</p></div>
         <div class="cards-remianing"> <p>Cards Remining: {{this.cardsRemaining}}</p></div>
       </div>
@@ -36,7 +41,8 @@ export default {
       'restartArray': RestartArray,
       'card': null,
       'cardKey': null,
-      'cardValue': null
+      'cardValue': null,
+      'highScore': 0
     }
   },
   methods: {
@@ -65,6 +71,7 @@ export default {
     checkLose() {
       if (this.playerCall === this.cardValue) {
         alert('YOU LOSE!');
+        this.addHighScore();
         this.resetGame();
       }
     },
@@ -93,6 +100,12 @@ export default {
       this.cardKey = null;
       this.cardValue = null;
       this.cardsArray = [...this.restartArray];
+    },
+    addHighScore() {
+      if (this.highScore < this.cardsRemaining) {
+        let highScore = (52 - this.cardsRemaining);
+        this.highScore = highScore;
+      }
     }
   }
 }
@@ -100,62 +113,76 @@ export default {
 
 <style lang="css" scoped>
 
-  .scores-container {
-    display: block;
-    text-align: center;
-    margin: 5px;
-    margin-bottom: 20px;
-  }
+.high-score-container {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-  .scores {
-    display: inline-block;
-    width: 40%;
-  }
+.high-score{
+  display: inline-block;
+}
 
-  .call {
-    font-size:30px;
-    float: left;
-    margin-right: 3%;
-    width: 45%;
-  }
+.score {
+  font-size:30px;
+}
 
-  .cards-remianing {
-    font-size:30px;
-    float: left;
-    width: 45%;
-  }
+.call-cr-container {
+  display: block;
+  text-align: center;
+  margin: 5px;
+  margin-bottom: 20px;
+}
 
-  .cards-container {
-    display: block;
-    text-align: center;
-    margin-bottom: 30px;
-  }
+.call-cr {
+  display: inline-block;
+  width: 40%;
+}
 
-  .cards {
-    display: inline-block;
-  }
+.call {
+  font-size:30px;
+  float: left;
+  margin-right: 3%;
+  width: 45%;
+}
 
-  .card {
-    height: 40vh;
-  }
+.cards-remianing {
+  font-size:30px;
+  float: left;
+  width: 45%;
+}
 
-  .button-container {
-    text-align: center;
-  }
+.cards-container {
+  display: block;
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-  .button {
-    height: 60px;
-    opacity: 80%;
-  }
+.cards {
+  display: inline-block;
+}
 
-  p {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto';
-    color: white;
-  }
+.card {
+  height: 40vh;
+}
 
-  input:focus {
-    outline: none;
-  }
+.button-container {
+  text-align: center;
+}
+
+.button {
+  height: 60px;
+  opacity: 80%;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto';
+  color: white;
+}
+
+input:focus {
+  outline: none;
+}
 </style>
