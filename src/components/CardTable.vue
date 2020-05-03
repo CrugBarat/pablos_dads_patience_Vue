@@ -22,7 +22,7 @@
     </div>
     <div class="button-container">
       <input v-if="gameRules" class="button" type="image" :src="returnButton" v-on:click="handleReturn">
-      <input class="button" type="image" :src="button" @mousedown="handleClick" @mouseup="handleRelease">
+      <input v-if="!gameRules" class="button" type="image" :src="button" @mousedown="handleClick" @mouseup="handleRelease">
       <input class="button" type="image" :src="rules" v-on:click="getGameRules">
     </div>
     <div>
