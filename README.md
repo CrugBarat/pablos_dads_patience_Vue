@@ -49,3 +49,11 @@ npm run serve
 - Click the link below to open project in browser
 
 [LocalHost](http://localhost:8080/)
+
+---
+
+# Acknowledgements
+
+Inspired by the bold Kenny Marshall.
+
+Icons used: [IconsDb](https://www.iconsdb.com/) 
