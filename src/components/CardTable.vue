@@ -54,7 +54,6 @@ export default {
       this.removeCard();
     },
     handleRelease() {
-      this.checkLose();
       this.pablosDasPatience();
     },
     getCard() {
@@ -78,6 +77,8 @@ export default {
     pablosDasPatience() {
       if (this.cardsRemaining === 0) {
         alert('YOU WON!');
+        this.addHighScore();
+        this.resetGame();
       } else {
         this.checkLose();
       }
@@ -102,8 +103,8 @@ export default {
       this.cardsArray = [...this.restartArray];
     },
     addHighScore() {
-      if (this.highScore < this.cardsRemaining) {
-        let highScore = (52 - this.cardsRemaining);
+      let highScore = (52 - this.cardsRemaining);
+      if (this.highScore < highScore) {
         this.highScore = highScore;
       }
     }
