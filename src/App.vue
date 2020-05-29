@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <div class="title">
-      <p>Pablo's Da's Patience</p>
+      <p>Kenny's Patience</p>
     </div>
     <div>
       <card-table></card-table>
@@ -27,6 +27,7 @@ export default {
   text-align: center;
   font-size: 8vw;
   opacity: 80%;
+  color: black;
 }
 
 p {
