@@ -8,6 +8,8 @@ A single player card game built using:
 
 **Markup/Styling**: HTML5/CSS3
 
+**Production Demo**: [Heruko App](https://kennys-patience.herokuapp.com/)
+
 I built PDP for a friend. His dad taught him the game when he was kid and I thought it would be fun to code it. The physical card game is as annoying as it is addictive. The app might just be annoying :)
 
 ---
@@ -48,12 +50,12 @@ npm run serve
 
 - Click the link below to open project in browser
 
-[LocalHost](http://localhost:8080/)
+- [LocalHost](http://localhost:8080/)
 
 ---
 
 # Acknowledgements
 
-Inspired by the bold Kenny Marshall.
-
-Icons used: [IconsDb](https://www.iconsdb.com/)
+- Inspired by the bold Kenny Marshall
+- Card design by [Paul Marshall](https://www.linkedin.com/in/paulkmarshall/)
+- Icons used: [IconsDb](https://www.iconsdb.com/)
